@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css" />
+    <title>ProjectJV</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+          <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">About</a></li>
+          </ul>
+      </nav>
+
+      <div class="switcher-box">
+          <span class="switcher-description">
+              <p>Ligth Mode</p>
+              <i class="fa-regular fa-sun"></i>
+              <!-- <i class="fa-solid fa-moon"></i> -->
+          </span>
+          <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+          </label>
+      </div>
+    </header>
+    <main>
+      <section id="home">
+        <h1>Lorem ipsum dolor sit amet</h1>
+      </section>
+      <section id="slide">
+        <h1>ProjectJV1</h1>
+          <div class="slideser">
+            <div class="slideser-item"><img src="./img/1.jpeg" alt="Image 1"></div>
+            <div class="slideser-item"><img src="./img/2.jpeg" alt="Image 2"></div>
+            <div class="slideser-item"><img src="./img/3.jpeg" alt="Image 3"></div>
+          </div>
+      </section>
+      <section id="form">
+        <h1>ProjectJV2</h1>
+          <div class="container">
+            <form id="passwordForm">
+              <label for="username">Uživatelské jméno:</label>
+              <input type="text" id="username" name="username" required>
+              
+              <label for="password">Heslo:</label>
+              <input type="password" id="password" name="password" required>
+              
+              <input type="checkbox" id="showPassword"> Zobrazit heslo
+              
+              <button type="submit">Odeslat</button>
+            </form>
+          </div>
+      </section>
+      <button id="scrollToTopBtn" title="Go to top">⬆️</button>
+    <script src="script.js"></script>
+  </body>
+  <footer>
+    <h2>JavaScript</h2>
+    <p>R</p>
+  </footer>
+</html>
