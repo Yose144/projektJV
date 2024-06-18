@@ -26,40 +26,38 @@ const switchTheme = (event) => {
 switcher.addEventListener("change", switchTheme);
 
 document.addEventListener("DOMContentLoaded", () => {
-  const slideser = document.querySelector(".slideser");
-  const sliderItems = document.querySelectorAll(".slideser-item");
+  const slider = document.querySelector(".slider");
+  const sliderItems = document.querySelectorAll(".slider-item");
 
   let isDown = false;
   let startX;
   let scrollLeft;
 
-  slideser.addEventListener("mousedown", (e) => {
+  slider.addEventListener("mousedown", (e) => {
     isDown = true;
-    slideser.classList.add("active");
+    slider.classList.add("active");
     startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slideser.scrollLeft;
+    scrollLeft = slider.scrollLeft;
   });
 
-  slideser.addEventListener("mouseleave", () => {
+  slider.addEventListener("mouseleave", () => {
     isDown = false;
     slider.classList.remove("active");
   });
 
-  slideser.addEventListener("mouseup", () => {
+  slider.addEventListener("mouseup", () => {
     isDown = false;
-    slideser.classList.remove("active");
+    slider.classList.remove("active");
   });
 
-  slideser.addEventListener("mousemove", (e) => {
+  slider.addEventListener("mousemove", (e) => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
     const walk = (x - startX) * 3; // Speed up scrolling
-    slideser.scrollLeft = scrollLeft - walk;
+    slider.scrollLeft = scrollLeft - walk;
   });
-});
 
-document.addEventListener("DOMContentLoaded", () => {
   const passwordInput = document.getElementById("password");
   const showPasswordCheckbox = document.getElementById("showPassword");
 
@@ -76,26 +74,26 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     alert("Formulář byl odeslán.");
   });
-});
 
-// Get the button
-let mybutton = document.getElementById("scrollToTopBtn");
+  // Get the button
+  let mybutton = document.getElementById("scrollToTopBtn");
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () {
-  scrollFunction();
-};
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction();
+  };
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
   }
-}
 
-// When the user clicks on the button, scroll to the top of the document
-mybutton.addEventListener("click", function () {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+  // When the user clicks on the button, scroll to the top of the document
+  mybutton.addEventListener("click", function () {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  });
 });
