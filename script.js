@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const passwordInput = document.getElementById("password");
   const showPasswordCheckbox = document.getElementById("showPassword");
+  const errorMessage = document.getElementById("error-message");
 
   showPasswordCheckbox.addEventListener("change", () => {
     if (showPasswordCheckbox.checked) {
@@ -72,8 +73,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("passwordForm");
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    alert("Formulář byl odeslán.");
+    errorMessage.textContent = ""; // Clear previous error message
+    const password = passwordInput.value;
+    if (validatePassword(password)) {
+      alert("Formulář byl odeslán.");
+    }
   });
+
+  const validatePassword = (password) => {
+    const minLength = 8;
+    const hasNumber = /\d/;
+    const hasUpperCase = /[A-Z]/;
+    const hasLowerCase = /[a-z]/;
+
+    if (password.length < minLength) {
+      errorMessage.textContent = "Heslo musí mít alespoň 8 znaků.";
+      return false;
+    }
+    if (!hasNumber.test(password)) {
+      errorMessage.textContent = "Heslo musí obsahovat alespoň jedno číslo.";
+      return false;
+    }
+    if (!hasUpperCase.test(password)) {
+      errorMessage.textContent = "Heslo musí obsahovat alespoň jedno velké písmeno.";
+      return false;
+    }
+    if (!hasLowerCase.test(password)) {
+      errorMessage.textContent = "Heslo musí obsahovat alespoň jedno malé písmeno.";
+      return false;
+    }
+    return true;
+  };
 
   // Get the button
   let mybutton = document.getElementById("scrollToTopBtn");
