@@ -59,15 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const passwordInput = document.getElementById("password");
+  const confirmPasswordInput = document.getElementById("confirmPassword");
   const showPasswordCheckbox = document.getElementById("showPassword");
   const errorMessage = document.getElementById("error-message");
 
   showPasswordCheckbox.addEventListener("change", () => {
-    if (showPasswordCheckbox.checked) {
-      passwordInput.type = "text";
-    } else {
-      passwordInput.type = "password";
-    }
+    const type = showPasswordCheckbox.checked ? "text" : "password";
+    passwordInput.type = type;
+    confirmPasswordInput.type = type;
   });
 
   const form = document.getElementById("passwordForm");
@@ -75,7 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     errorMessage.textContent = ""; // Clear previous error message
     const password = passwordInput.value;
-    if (validatePassword(password)) {
+    const confirmPassword = confirmPasswordInput.value;
+
+    if (validatePassword(password) && validateConfirmPassword(password, confirmPassword)) {
       alert("Formulář byl odeslán.");
     }
   });
@@ -100,6 +101,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (!hasLowerCase.test(password)) {
       errorMessage.textContent = "Heslo musí obsahovat alespoň jedno malé písmeno.";
+      return false;
+    }
+    return true;
+  };
+
+  const validateConfirmPassword = (password, confirmPassword) => {
+    if (password !== confirmPassword) {
+      errorMessage.textContent = "Hesla se neshodují.";
       return false;
     }
     return true;
